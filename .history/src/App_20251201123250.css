@@ -1,0 +1,118 @@
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background-color: #0f172a;
+    color: #e5e7eb;
+}
+
+.app-root {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    /* по вертикали */
+    justify-content: center;
+    /* по горизонтали */
+    padding: 16px;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 420px;
+    background-color: #020617;
+    border-radius: 12px;
+    padding: 24px 20px 20px;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.5);
+}
+
+.auth-title {
+    margin: 0 0 16px;
+    font-size: 22px;
+}
+
+.auth-toggle {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.auth-toggle__btn {
+    flex: 1;
+    padding: 8px 0;
+    border-radius: 8px;
+    border: 1px solid #1e293b;
+    background: transparent;
+    color: #e5e7eb;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.auth-toggle__btn--active {
+    background-color: #1d4ed8;
+    border-color: #1d4ed8;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.field__label {
+    font-size: 13px;
+    color: #9ca3af;
+}
+
+.field__input {
+    border-radius: 8px;
+    border: 1px solid #334155;
+    padding: 8px 10px;
+    font-size: 14px;
+    background-color: #020617;
+    color: #e5e7eb;
+}
+
+.field__input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 1px #3b82f6;
+}
+
+.field__input--error {
+    border-color: #ef4444;
+}
+
+.field__error {
+    font-size: 12px;
+    color: #f97316;
+}
+
+.btn {
+    border-radius: 8px;
+    border: none;
+    padding: 9px 12px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.btn--primary {
+    background-color: #3b82f6;
+    color: #f9fafb;
+}
+
+.btn--primary:hover {
+    background-color: #2563eb;
+}
+
+.btn--link {
+    background: transparent;
+    color: #9ca3af;
+    text-decoration: underline;
+    padding: 4px 0;
+    align-self: flex-start;
+}
