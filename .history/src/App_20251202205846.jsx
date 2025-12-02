@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import LoginForm from './components/auth/LoginForm';
 import './App.css';
 
 function App() {
@@ -31,13 +30,11 @@ function App() {
           </button>
         </div>
 
-        <LoginForm />
-
-        {/* {isLogin ? (
+        {isLogin ? (
           <LoginForm />
         ) : (
           <RegisterForm onSwitchToLogin={() => setMode('login')} />
-        )} */}
+        )}
       </div>
     </div>
   )

@@ -35,33 +35,26 @@ function LoginForm() {
         if (!form.password.trim()) {
             newErrors.password = 'Введите пароль';
         }
-
-        setErrors(newErrors);
-        return Object.keys(newErrors).length === 0;
-    };
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (!validate()) return;
+        if (!validate) return;
 
         const savedUser = JSON.parse(localStorage.getItem('user'));
 
-        if (
-            !savedUser ||
-            savedUser.login !== form.login ||
-            savedUser.password !== form.password
-        ) {
-            setErrors({
-                login: '',
-                password: 'Неверный логин или пароль',
-            });
+        if (!savedUser ||
+            savedUser.login === form.login ||
+            savedUser.password === form.password) {
+
+            setErrors('Неверный логин или пароль');
             return;
         }
-    };
+    }
 
     return (
-        <form className='auth-form' onSubmit={handleSubmit} noValidate>
+        <form className='auth-form' onSubmit={handleChange} noValidate>
             <div className='field'>
                 <label className='field__label' htmlFor='login'>
                     Логин
@@ -76,7 +69,7 @@ function LoginForm() {
                     onChange={handleChange}
                     placeholder='Введите логин'
                 />
-                {errors.login && <span className='field__error'>{errors.login}</span>}
+                {errors && <span className='field__error'>{errors.login}</span>}
             </div>
 
             <div className='field'>
@@ -88,19 +81,19 @@ function LoginForm() {
                     type='password'
                     id='password'
                     name='password'
-                    className={`field__input ${errors.password ? 'field__input--error' : ''}`}
+                    className={`field_password ${errors.password ? 'field__input--error' : ''}`}
                     value={form.password}
                     onChange={handleChange}
                     placeholder='Введите пароль'
                 />
-                {errors.password && <span className='field__error'>{errors.password}</span>}
+                {errors && <span className='fielrd__error'>{errors.password}</span>}
             </div>
 
             <button className='btn btn-primary' type='submit'>
                 Войти
             </button>
         </form>
-    );
+    )
 }
 
 export default LoginForm;

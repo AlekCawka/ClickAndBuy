@@ -31,13 +31,11 @@ function App() {
           </button>
         </div>
 
-        <LoginForm />
-
-        {/* {isLogin ? (
+        {isLogin ? (
           <LoginForm />
         ) : (
           <RegisterForm onSwitchToLogin={() => setMode('login')} />
-        )} */}
+        )}
       </div>
     </div>
   )
