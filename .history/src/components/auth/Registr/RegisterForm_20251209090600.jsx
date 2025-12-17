@@ -52,6 +52,8 @@ function App() {
         const name = input.name.trim();
         const login = input.login.trim();
         const email = input.login.trim();
+        const localPhone = getLocalPhoneDigits(input.phone);
+        const passwordResult = validatePassword(input.password);
 
 
         if (!name) {
@@ -79,50 +81,35 @@ function App() {
         }
     }
 
-    const formatPhone = (input) => {
-        let digits = input.replace(/\D/g, '');
 
-        const country = '+38';
-        const LOCAL_LENGTH = 10;
+    function formatPhone(input) {
+        const maxLength = 10;
+        const phoneCountryCode = '38';
+        const local = getLocalPhoneDigits(input).slice(0, maxLength);
 
-        if (digits.startsWith('38')) {
-            digits = digits.slice(2);
-        }
-        if (digits.startsWith('7')) {
-            digits.slice(1);
-        }
+        if (!local) return '';
 
-        const local = digits.replace(/^38/, '').slice(0, LOCAL_LENGTH);
+        const part1 = local.slice(0, 3); 
+        const part2 = local.slice(3, 6); 
+        const part3 = local.slice(6, 8); 
+        const part4 = local.slice(8, 10); 
 
-        if (!local.length) return '';
-
-        const part1 = digits.slice(0, 3);
-        const part2 = digits.slice(3, 6);
-        const part3 = digits.slice(6, 8);
-        const part4 = digits.slice(8, 10);
-
-        let formatted = country;
+        let result = `+${phoneCountryCode}`;
 
         if (part1) {
-            formatted += ` (${part1})`;
+            result += ` (${part1}`;
             if (local.length >= 3) {
-                formatted += ')';
+                result += ')';
             }
         }
 
-        if (part2) formatted += ` ${part2}`;
-        if (part3) formatted += `-${part3}`;
-        if (part4) formatted += `-${part4}`;
+        if (part2) result += ` ${part2}`;
+        if (part3) result += `-${part3}`;
+        if (part4) result += `-${part4}`;
 
-        return formatted;
+        return result;
     }
 
-    const validatePassword(password) => {
-        const rules = [
-            {test: (p)}
-            https://chatgpt.com/c/692972a5-a5f8-832c-8bf8-e4510237e241
-        ]
-    }
 }
 
 export default App;
